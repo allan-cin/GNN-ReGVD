@@ -1,0 +1,697 @@
+root@8e8b3c7c504a:/GNN-ReGVD/code# ./run.sh
+/usr/local/lib/python3.8/dist-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.24.1
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+07/31/2023 14:20:20 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+Some weights of RobertaForSequenceClassification were not initialized from the model checkpoint at microsoft/graphcodebert-base and are newly initialized: ['classifier.out_proj.bias', 'classifier.out_proj.weight', 'classifier.dense.weight', 'classifier.dense.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+07/31/2023 14:20:22 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, alpha_weight=1.0, att_op='mul', block_size=400, cache_dir='', config_name='', device=device(type='cuda'), do_eval=True, do_lower_case=False, do_test=True, do_train=True, epoch=100, eval_all_checkpoints=False, eval_batch_size=128, eval_data_file='../dataset/valid.jsonl', evaluate_during_training=True, feature_dim_size=768, format='uni', fp16=False, fp16_opt_level='O1', gnn='ReGCN', gradient_accumulation_steps=1, hidden_size=128, learning_rate=0.0005, local_rank=-1, log_neptune=False, logging_steps=50, max_grad_norm=1.0, max_steps=-1, mlm=False, mlm_probability=0.15, model='GNNs', model_name_or_path='microsoft/graphcodebert-base', model_type='roberta', n_gpu=1, no_cuda=False, num_GNN_layers=2, num_classes=2, num_train_epochs=1.0, output_dir='./saved_models/regcn_l2_hs128_uni_ws5_lr5e4', overwrite_cache=False, overwrite_output_dir=False, per_gpu_eval_batch_size=128, per_gpu_train_batch_size=128, remove_residual=False, save_steps=50, save_total_limit=None, seed=123456, server_ip='', server_port='', start_epoch=0, start_step=0, test_data_file='../dataset/test.jsonl', tokenizer_name='microsoft/graphcodebert-base', train_batch_size=128, train_data_file='../dataset/train.jsonl', training_percent=1.0, warmup_steps=0, weight_decay=0.0, window_size=5)
+07/31/2023 14:20:54 - INFO - __main__ -   *** Total Sample ***
+07/31/2023 14:20:54 - INFO - __main__ -         Total: 21854    selected: 21854 percent: 1.0
+07/31/2023 14:20:54 - INFO - __main__ -   *** Sample ***
+07/31/2023 14:20:54 - INFO - __main__ -   Total sample
+07/31/2023 14:20:54 - INFO - __main__ -   idx: 0
+07/31/2023 14:20:54 - INFO - __main__ -   label: 0
+07/31/2023 14:20:54 - INFO - __main__ -   input_tokens: ['<s>', 'static', '_av', '_', 'cold', '_int', '_v', 'd', 'ade', 'c', '_', 'init', '(', 'AV', 'Cod', 'ec', 'Context', '_*', 'av', 'ctx', ')', '_{', '_V', 'D', 'AD', 'ec', 'oder', 'Context', '_*', 'ctx', '_=', '_av', 'ctx', '->', 'priv', '_', 'data', ';', '_struct', '_v', 'da', '_', 'context', '_*', 'v', 'da', '_', 'ctx', '_=', '_&', 'ctx', '->', 'v', 'da', '_', 'ctx', ';', '_OS', 'Status', '_status', ';', '_int', '_ret', ';', '_c', 'tx', '->', 'h', '264', '_', 'initialized', '_=', '_0', ';', '_/*', '_init', '_p', 'ix', '_', 'fm', 'ts', '_of', '_codec', '_*/', '_if', '_(!', 'ff', '_', 'h', '264', '_', 'v', 'da', '_', 'dec', 'oder', '.', 'p', 'ix', '_', 'fm', 'ts', ')', '_{', '_if', '_(', 'k', 'C', 'FC', 'ore', 'Found', 'ation', 'Version', 'Number', '_<', '_k', 'C', 'FC', 'ore', 'Found', 'ation', 'Version', 'Number', '10', '_', '7', ')', '_ff', '_', 'h', '264', '_', 'v', 'da', '_', 'dec', 'oder', '.', 'p', 'ix', '_', 'fm', 'ts', '_=', '_v', 'da', '_', 'p', 'ix', 'fm', 'ts', '_', 'pri', 'or', '_', '10', '_', '7', ';', '_else', '_ff', '_', 'h', '264', '_', 'v', 'da', '_', 'dec', 'oder', '.', 'p', 'ix', '_', 'fm', 'ts', '_=', '_v', 'da', '_', 'p', 'ix', 'fm', 'ts', ';', '_}', '_/*', '_init', '_v', 'da', '_*/', '_mem', 'set', '(', 'v', 'da', '_', 'ctx', ',', '_0', ',', '_sizeof', '(', 'struct', '_v', 'da', '_', 'context', '));', '_v', 'da', '_', 'ctx', '->', 'width', '_=', '_av', 'ctx', '->', 'width', ';', '_v', 'da', '_', 'ctx', '->', 'height', '_=', '_av', 'ctx', '->', 'height', ';', '_v', 'da', '_', 'ctx', '->', 'format', '_=', "_'", 'av', 'c', '1', "';", '_v', 'da', '_', 'ctx', '->', 'use', '_', 'sync', '_', 'dec', 'oding', '_=', '_1', ';', '_v', 'da', '_', 'ctx', '->', 'use', '_', 'ref', '_', 'buffer', '_=', '_1', ';', '_c', 'tx', '->', 'p', 'ix', '_', 'f', 'mt', '_=', '_av', 'ctx', '->', 'get', '_', 'format', '(', 'av', 'ctx', ',', '_av', 'ctx', '->', 'cod', 'ec', '->', 'p', 'ix', '_', 'fm', 'ts', ');', '_switch', '_(', 'ctx', '->', 'p', 'ix', '_', 'f', 'mt', ')', '_{', '_case', '_AV', '_', 'P', 'IX', '_', 'F', 'MT', '_', 'U', 'Y', 'V', 'Y', '422', ':', '_v', 'da', '_', 'ctx', '->', 'cv', '_', 'p', 'ix', '_', 'f', 'mt', '_', 'type', '_=', "_'", '2', 'v', 'uy', "';", '_break', ';', '_case', '_AV', '_', 'P', 'IX', '_', 'F', 'MT', '_', 'Y', 'U', 'Y', 'V', '422', ':', '_v', 'da', '_', 'ctx', '->', 'cv', '_', 'p', 'ix', '_', 'f', 'mt', '_', 'type', '_=', "_'", 'yu', 'vs', "';", '_break', ';', '_case', '_AV', '_', 'P', 'IX', '_', 'F', 'MT', '_', 'NV', '12', ':', '</s>']
+07/31/2023 14:20:54 - INFO - __main__ -   input_ids: 0 42653 6402 1215 33912 6979 748 417 1829 438 1215 25153 1640 10612 47436 3204 48522 1009 1469 49575 43 25522 468 495 2606 3204 15362 48522 1009 49575 5457 6402 49575 46613 25943 1215 23687 131 29916 748 6106 1215 46796 1009 705 6106 1215 49575 5457 359 49575 46613 705 6106 1215 49575 131 8192 47731 2194 131 6979 5494 131 740 43820 46613 298 29137 1215 49722 5457 321 131 48565 45511 181 3181 1215 40523 1872 9 45797 48404 114 48209 3145 1215 298 29137 1215 705 6106 1215 11127 15362 4 642 3181 1215 40523 1872 43 25522 114 36 330 347 5268 1688 29991 1258 47322 43623 28696 449 347 5268 1688 29991 1258 47322 43623 698 1215 406 43 48400 1215 298 29137 1215 705 6106 1215 11127 15362 4 642 3181 1215 40523 1872 5457 748 6106 1215 642 3181 40523 1872 1215 13718 368 1215 698 1215 406 131 1493 48400 1215 298 29137 1215 705 6106 1215 11127 15362 4 642 3181 1215 40523 1872 5457 748 6106 1215 642 3181 40523 1872 131 35524 48565 45511 748 6106 48404 26012 8738 1640 705 6106 1215 49575 6 321 6 49907 1640 25384 748 6106 1215 46796 48749 748 6106 1215 49575 46613 36097 5457 6402 49575 46613 36097 131 748 6106 1215 49575 46613 37009 5457 6402 49575 46613 37009 131 748 6106 1215 49575 46613 34609 5457 128 1469 438 134 23500 748 6106 1215 49575 46613 3698 1215 45176 1215 11127 19519 5457 112 131 748 6106 1215 49575 46613 3698 1215 13043 1215 47438 5457 112 131 740 43820 46613 642 3181 1215 506 16100 5457 6402 49575 46613 6460 1215 34609 1640 1469 49575 6 6402 49575 46613 29659 3204 46613 642 3181 1215 40523 1872 4397 5405 36 49575 46613 642 3181 1215 506 16100 43 25522 403 17307 1215 510 9482 1215 597 11674 1215 791 975 846 975 37319 35 748 6106 1215 49575 46613 38635 1215 642 3181 1215 506 16100 1215 12528 5457 128 176 705 5781 23500 1108 131 403 17307 1215 510 9482 1215 597 11674 1215 975 791 975 846 37319 35 748 6106 1215 49575 46613 38635 1215 642 3181 1215 506 16100 1215 12528 5457 128 29159 15597 23500 1108 131 403 17307 1215 510 9482 1215 597 11674 1215 31668 1092 35 2
+07/31/2023 14:20:54 - INFO - __main__ -   *** Sample ***
+07/31/2023 14:20:54 - INFO - __main__ -   Total sample
+07/31/2023 14:20:54 - INFO - __main__ -   idx: 1
+07/31/2023 14:20:54 - INFO - __main__ -   label: 0
+07/31/2023 14:20:54 - INFO - __main__ -   input_tokens: ['<s>', 'static', '_int', '_trans', 'code', '(', 'AV', 'Format', 'Context', '_**', 'output', '_', 'files', ',', '_int', '_n', 'b', '_', 'output', '_', 'files', ',', '_Input', 'File', '_*', 'input', '_', 'files', ',', '_int', '_n', 'b', '_', 'input', '_', 'files', ',', '_Stream', 'Map', '_*', 'stream', '_', 'maps', ',', '_int', '_n', 'b', '_', 'stream', '_', 'maps', ')', '_{', '_int', '_ret', '_=', '_0', ',', '_i', ',', '_j', ',', '_k', ',', '_n', ',', '_n', 'b', '_', 'ost', 'ream', 's', '_=', '_0', ',', '_step', ';', '_AV', 'Format', 'Context', '_*', 'is', ',', '_*', 'os', ';', '_AV', 'Cod', 'ec', 'Context', '_*', 'cod', 'ec', ',', '_*', 'ic', 'od', 'ec', ';', '_Output', 'Stream', '_*', 'ost', ',', '_**', 'ost', '_', 'table', '_=', '_NULL', ';', '_Input', 'Stream', '_*', 'ist', ';', '_char', '_error', '[', '1024', '];', '_int', '_key', ';', '_int', '_want', '_', 'sd', 'p', '_=', '_1', ';', '_uint', '8', '_', 't', '_no', '_', 'pack', 'et', '[', 'MAX', '_', 'FIL', 'ES', ']=', '{', '0', '};', '_int', '_no', '_', 'pack', 'et', '_', 'count', '=', '0', ';', '_int', '_n', 'b', '_', 'frame', '_', 'th', 'reshold', '[', 'AV', 'MED', 'IA', '_', 'TYPE', '_', 'NB', ']=', '{', '0', '};', '_int', '_n', 'b', '_', 'stream', 's', '[', 'AV', 'MED', 'IA', '_', 'TYPE', '_', 'NB', ']=', '{', '0', '};', '_if', '_(', 'rate', '_', 'em', 'u', ')', '_for', '_(', 'i', '_=', '_0', ';', '_i', '_<', '_n', 'b', '_', 'input', '_', 'stream', 's', ';', '_i', '++)', '_input', '_', 'stream', 's', '[', 'i', '].', 'start', '_=', '_av', '_', 'get', 'time', '();', '_/*', '_output', '_stream', '_init', '_*/', '_n', 'b', '_', 'ost', 'ream', 's', '_=', '_0', ';', '_for', '(', 'i', '=', '0', ';', 'i', '<', 'nb', '_', 'output', '_', 'files', ';', 'i', '++)', '_{', '_os', '_=', '_output', '_', 'files', '[', 'i', '];', '_if', '_(!', 'os', '->', 'nb', '_', 'stream', 's', '_&&', '_!', '(', 'os', '->', 'o', 'format', '->', 'flags', '_&', '_AV', 'F', 'MT', '_', 'N', 'OST', 'REAM', 'S', '))', '_{', '_av', '_', 'dump', '_', 'format', '(', 'output', '_', 'files', '[', 'i', '],', '_i', ',', '_output', '_', 'files', '[', 'i', ']', '->', 'filename', ',', '_1', ');', '_f', 'printf', '(', 'st', 'der', 'r', ',', '_"', 'Output', '_file', '_#', '%', 'd', '_does', '_not', '_contain', '_any', '_stream', '\\', 'n', '",', '_i', ');', '_ret', '_=', '_A', 'VER', 'ROR', '(', 'E', 'IN', 'VAL', ');', '_goto', '_fail', ';', '_}', '_n', 'b', '_', 'ost', 'ream', 's', '_+=', '_os', '->', 'nb', '_', 'stream', 's', ';', '_}', '_if', '_(', 'nb', '_', 'stream', '_', 'maps', '_>', '_0', '_&&', '_n', 'b', '_', 'stream', '_', 'maps', '_!=', '_n', 'b', '</s>']
+07/31/2023 14:20:54 - INFO - __main__ -   input_ids: 0 42653 6979 6214 20414 1640 10612 48587 48522 13540 46234 1215 42018 6 6979 295 428 1215 46234 1215 42018 6 41327 9966 1009 46797 1215 42018 6 6979 295 428 1215 46797 1215 42018 6 16183 41151 1009 8656 1215 44754 6 6979 295 428 1215 8656 1215 44754 43 25522 6979 5494 5457 321 6 939 6 1236 6 449 6 295 6 295 428 1215 2603 26930 29 5457 321 6 1149 131 17307 48587 48522 1009 354 6 1009 366 131 17307 47436 3204 48522 1009 29659 3204 6 1009 636 1630 3204 131 38252 36757 1009 2603 6 13540 2603 1215 14595 5457 48955 131 41327 36757 1009 661 131 16224 5849 10975 47477 44082 6979 762 131 6979 236 1215 28045 642 5457 112 131 49315 398 1215 90 117 1215 12486 594 10975 30187 1215 46008 1723 49659 45152 288 49423 6979 117 1215 12486 594 1215 11432 5214 288 131 6979 295 428 1215 26061 1215 212 45749 10975 10612 32653 2889 1215 48710 1215 20485 49659 45152 288 49423 6979 295 428 1215 8656 29 10975 10612 32653 2889 1215 48710 1215 20485 49659 45152 288 49423 114 36 7954 1215 991 257 43 13 36 118 5457 321 131 939 28696 295 428 1215 46797 1215 8656 29 131 939 49346 8135 1215 8656 29 10975 118 8174 13124 5457 6402 1215 6460 958 47006 48565 4195 4615 45511 48404 295 428 1215 2603 26930 29 5457 321 131 13 1640 118 5214 288 131 118 41552 40460 1215 46234 1215 42018 131 118 49346 25522 11988 5457 4195 1215 42018 10975 118 44082 114 48209 366 46613 40460 1215 8656 29 48200 27785 1640 366 46613 139 34609 46613 46760 359 17307 597 11674 1215 487 13556 28057 104 35122 25522 6402 1215 46593 1215 34609 1640 46234 1215 42018 10975 118 7479 939 6 4195 1215 42018 10975 118 742 46613 49451 6 112 4397 856 49775 1640 620 3624 338 6 22 48293 2870 849 207 417 473 45 5585 143 4615 37457 282 1297 939 4397 5494 5457 83 9847 45055 1640 717 2444 39766 4397 49325 5998 131 35524 295 428 1215 2603 26930 29 49371 11988 46613 40460 1215 8656 29 131 35524 114 36 40460 1215 8656 1215 44754 8061 321 48200 295 428 1215 8656 1215 44754 49333 295 428 2
+07/31/2023 14:20:54 - INFO - __main__ -   *** Sample ***
+07/31/2023 14:20:54 - INFO - __main__ -   Total sample
+07/31/2023 14:20:54 - INFO - __main__ -   idx: 2
+07/31/2023 14:20:54 - INFO - __main__ -   label: 0
+07/31/2023 14:20:54 - INFO - __main__ -   input_tokens: ['<s>', 'static', '_void', '_v', '4', 'l', '2', '_', 'free', '_', 'buffer', '(', 'void', '_*', 'op', 'aque', ',', '_uint', '8', '_', 't', '_*', 'un', 'used', ')', '_{', '_V', '4', 'L', '2', 'Buffer', '*', '_av', 'buf', '_=', '_opaque', ';', '_V', '4', 'L', '2', 'm', '2', 'm', 'Context', '_*', 's', '_=', '_buf', '_', 'to', '_', 'm', '2', 'm', 'ctx', '(', 'av', 'buf', ');', '_if', '_(', 'atomic', '_', 'f', 'etch', '_', 'sub', '(&', 'av', 'buf', '->', 'context', '_', 'ref', 'count', ',', '_1', ')', '_==', '_1', ')', '_{', '_atomic', '_', 'f', 'etch', '_', 'sub', '_', 'expl', 'icit', '(&', 's', '->', 'ref', 'count', ',', '_1', ',', '_memory', '_', 'order', '_', 'ac', 'q', '_', 'rel', ');', '_if', '_(', 's', '->', 're', 'init', ')', '_{', '_if', '_(!', 'atomic', '_', 'load', '(&', 's', '->', 'ref', 'count', '))', '_sem', '_', 'post', '(&', 's', '->', 'ref', 'sync', ');', '_}', '_else', '_if', '_(', 'av', 'buf', '->', 'context', '->', 'stream', 'on', ')', '_ff', '_', 'v', '4', 'l', '2', '_', 'buffer', '_', 'en', 'queue', '(', 'av', 'buf', ');', '_av', '_', 'buffer', '_', 'un', 'ref', '(&', 'av', 'buf', '->', 'context', '_', 'ref', ');', '_}', '_}', '</s>']
+07/31/2023 14:20:54 - INFO - __main__ -   input_ids: 0 42653 13842 748 306 462 176 1215 3743 1215 47438 1640 47908 1009 1517 35485 6 49315 398 1215 90 1009 879 6199 43 25522 468 306 574 176 49334 3226 6402 48939 5457 31861 131 468 306 574 176 119 176 119 48522 1009 29 5457 49125 1215 560 1215 119 176 119 49575 1640 1469 48939 4397 114 36 45826 1215 506 29094 1215 10936 49763 1469 48939 46613 46796 1215 13043 11432 6 112 43 45994 112 43 25522 21495 1215 506 29094 1215 10936 1215 23242 17022 49763 29 46613 13043 11432 6 112 6 3783 1215 10337 1215 1043 1343 1215 5982 4397 114 36 29 46613 241 25153 43 25522 114 48209 45826 1215 16204 49763 29 46613 13043 11432 35122 9031 1215 7049 49763 29 46613 13043 45176 4397 35524 1493 114 36 1469 48939 46613 46796 46613 8656 261 43 48400 1215 705 306 462 176 1215 47438 1215 225 48702 1640 1469 48939 4397 6402 1215 47438 1215 879 13043 49763 1469 48939 46613 46796 1215 13043 4397 35524 35524 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+07/31/2023 14:20:55 - INFO - __main__ -   ***** Running training *****
+07/31/2023 14:20:55 - INFO - __main__ -     Num examples = 21854
+07/31/2023 14:20:55 - INFO - __main__ -     Num Epochs = 100
+07/31/2023 14:20:55 - INFO - __main__ -     Instantaneous batch size per GPU = 128
+07/31/2023 14:20:55 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 128
+07/31/2023 14:20:55 - INFO - __main__ -     Gradient Accumulation steps = 1
+07/31/2023 14:20:55 - INFO - __main__ -     Total optimization steps = 17100
+using default unweighted graph
+
+07/31/2023 14:22:54 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:22:54 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:22:54 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:23:07 - INFO - __main__ -     eval_loss = 0.6885
+07/31/2023 14:23:07 - INFO - __main__ -     eval_acc = 0.5655
+07/31/2023 14:23:07 - INFO - __main__ -     ********************
+07/31/2023 14:23:07 - INFO - __main__ -     Best acc:0.5655
+07/31/2023 14:23:07 - INFO - __main__ -     ********************
+07/31/2023 14:23:08 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:23:08 - INFO - __main__ -   epoch 0 loss 0.69207
+07/31/2023 14:25:07 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:25:07 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:25:07 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:25:20 - INFO - __main__ -     eval_loss = 0.6876
+07/31/2023 14:25:20 - INFO - __main__ -     eval_acc = 0.5655
+07/31/2023 14:25:20 - INFO - __main__ -   epoch 1 loss 0.69076
+07/31/2023 14:27:16 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:27:16 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:27:16 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:27:28 - INFO - __main__ -     eval_loss = 0.6807
+07/31/2023 14:27:28 - INFO - __main__ -     eval_acc = 0.5567
+07/31/2023 14:27:28 - INFO - __main__ -   epoch 2 loss 0.68586
+07/31/2023 14:29:24 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:29:24 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:29:24 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:29:38 - INFO - __main__ -     eval_loss = 0.6723
+07/31/2023 14:29:38 - INFO - __main__ -     eval_acc = 0.5692
+07/31/2023 14:29:38 - INFO - __main__ -     ********************
+07/31/2023 14:29:38 - INFO - __main__ -     Best acc:0.5692
+07/31/2023 14:29:38 - INFO - __main__ -     ********************
+07/31/2023 14:29:39 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:29:39 - INFO - __main__ -   epoch 3 loss 0.67849
+07/31/2023 14:31:39 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:31:39 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:31:39 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:31:51 - INFO - __main__ -     eval_loss = 0.6658
+07/31/2023 14:31:51 - INFO - __main__ -     eval_acc = 0.5743
+07/31/2023 14:31:51 - INFO - __main__ -     ********************
+07/31/2023 14:31:51 - INFO - __main__ -     Best acc:0.5743
+07/31/2023 14:31:51 - INFO - __main__ -     ********************
+07/31/2023 14:31:52 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:31:52 - INFO - __main__ -   epoch 4 loss 0.67124
+07/31/2023 14:33:47 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:33:47 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:33:47 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:33:59 - INFO - __main__ -     eval_loss = 0.6647
+07/31/2023 14:33:59 - INFO - __main__ -     eval_acc = 0.5747
+07/31/2023 14:33:59 - INFO - __main__ -     ********************
+07/31/2023 14:33:59 - INFO - __main__ -     Best acc:0.5747
+07/31/2023 14:33:59 - INFO - __main__ -     ********************
+07/31/2023 14:34:00 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:34:00 - INFO - __main__ -   epoch 5 loss 0.66609
+07/31/2023 14:35:54 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:35:54 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:35:54 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:36:06 - INFO - __main__ -     eval_loss = 0.6572
+07/31/2023 14:36:06 - INFO - __main__ -     eval_acc = 0.582
+07/31/2023 14:36:06 - INFO - __main__ -     ********************
+07/31/2023 14:36:06 - INFO - __main__ -     Best acc:0.582
+07/31/2023 14:36:06 - INFO - __main__ -     ********************
+07/31/2023 14:36:07 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:36:07 - INFO - __main__ -   epoch 6 loss 0.66139
+07/31/2023 14:38:01 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:38:01 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:38:01 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:38:13 - INFO - __main__ -     eval_loss = 0.6556
+07/31/2023 14:38:13 - INFO - __main__ -     eval_acc = 0.586
+07/31/2023 14:38:13 - INFO - __main__ -     ********************
+07/31/2023 14:38:13 - INFO - __main__ -     Best acc:0.586
+07/31/2023 14:38:13 - INFO - __main__ -     ********************
+07/31/2023 14:38:14 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:38:14 - INFO - __main__ -   epoch 7 loss 0.65861
+07/31/2023 14:40:08 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:40:08 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:40:08 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:40:20 - INFO - __main__ -     eval_loss = 0.6607
+07/31/2023 14:40:20 - INFO - __main__ -     eval_acc = 0.5787
+07/31/2023 14:40:20 - INFO - __main__ -   epoch 8 loss 0.64936
+07/31/2023 14:42:14 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:42:14 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:42:14 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:42:26 - INFO - __main__ -     eval_loss = 0.6465
+07/31/2023 14:42:26 - INFO - __main__ -     eval_acc = 0.5933
+07/31/2023 14:42:26 - INFO - __main__ -     ********************
+07/31/2023 14:42:26 - INFO - __main__ -     Best acc:0.5933
+07/31/2023 14:42:26 - INFO - __main__ -     ********************
+07/31/2023 14:42:27 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:42:27 - INFO - __main__ -   epoch 9 loss 0.64361
+07/31/2023 14:44:21 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:44:21 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:44:21 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:44:34 - INFO - __main__ -     eval_loss = 0.6456
+07/31/2023 14:44:34 - INFO - __main__ -     eval_acc = 0.6032
+07/31/2023 14:44:34 - INFO - __main__ -     ********************
+07/31/2023 14:44:34 - INFO - __main__ -     Best acc:0.6032
+07/31/2023 14:44:34 - INFO - __main__ -     ********************
+07/31/2023 14:44:35 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:44:35 - INFO - __main__ -   epoch 10 loss 0.63414
+07/31/2023 14:46:32 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:46:32 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:46:32 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:46:44 - INFO - __main__ -     eval_loss = 0.6326
+07/31/2023 14:46:44 - INFO - __main__ -     eval_acc = 0.627
+07/31/2023 14:46:44 - INFO - __main__ -     ********************
+07/31/2023 14:46:44 - INFO - __main__ -     Best acc:0.627
+07/31/2023 14:46:44 - INFO - __main__ -     ********************
+07/31/2023 14:46:45 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:46:45 - INFO - __main__ -   epoch 11 loss 0.62491
+07/31/2023 14:48:40 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:48:40 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:48:40 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:48:52 - INFO - __main__ -     eval_loss = 0.6512
+07/31/2023 14:48:52 - INFO - __main__ -     eval_acc = 0.5758
+07/31/2023 14:48:52 - INFO - __main__ -   epoch 12 loss 0.61623
+07/31/2023 14:50:46 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:50:46 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:50:46 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:50:59 - INFO - __main__ -     eval_loss = 0.6303
+07/31/2023 14:50:59 - INFO - __main__ -     eval_acc = 0.6215
+07/31/2023 14:50:59 - INFO - __main__ -   epoch 13 loss 0.60292
+07/31/2023 14:52:53 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:52:53 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:52:53 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:53:06 - INFO - __main__ -     eval_loss = 0.6311
+07/31/2023 14:53:06 - INFO - __main__ -     eval_acc = 0.6212
+07/31/2023 14:53:06 - INFO - __main__ -   epoch 14 loss 0.59241
+07/31/2023 14:55:00 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:55:00 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:55:00 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:55:12 - INFO - __main__ -     eval_loss = 0.6177
+07/31/2023 14:55:12 - INFO - __main__ -     eval_acc = 0.631
+07/31/2023 14:55:12 - INFO - __main__ -     ********************
+07/31/2023 14:55:12 - INFO - __main__ -     Best acc:0.631
+07/31/2023 14:55:12 - INFO - __main__ -     ********************
+07/31/2023 14:55:13 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 14:55:13 - INFO - __main__ -   epoch 15 loss 0.58114
+07/31/2023 14:57:08 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:57:08 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:57:08 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:57:20 - INFO - __main__ -     eval_loss = 0.6363
+07/31/2023 14:57:20 - INFO - __main__ -     eval_acc = 0.6212
+07/31/2023 14:57:20 - INFO - __main__ -   epoch 16 loss 0.56702
+07/31/2023 14:59:13 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 14:59:13 - INFO - __main__ -     Num examples = 2732
+07/31/2023 14:59:13 - INFO - __main__ -     Batch size = 128
+07/31/2023 14:59:25 - INFO - __main__ -     eval_loss = 0.6299
+07/31/2023 14:59:25 - INFO - __main__ -     eval_acc = 0.6252
+07/31/2023 14:59:25 - INFO - __main__ -   epoch 17 loss 0.56153
+07/31/2023 15:01:22 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:01:22 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:01:22 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:01:34 - INFO - __main__ -     eval_loss = 0.6421
+07/31/2023 15:01:34 - INFO - __main__ -     eval_acc = 0.6127
+07/31/2023 15:01:34 - INFO - __main__ -   epoch 18 loss 0.5501
+07/31/2023 15:03:28 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:03:28 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:03:28 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:03:40 - INFO - __main__ -     eval_loss = 0.6255
+07/31/2023 15:03:40 - INFO - __main__ -     eval_acc = 0.6373
+07/31/2023 15:03:40 - INFO - __main__ -     ********************
+07/31/2023 15:03:40 - INFO - __main__ -     Best acc:0.6373
+07/31/2023 15:03:40 - INFO - __main__ -     ********************
+07/31/2023 15:03:41 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 15:03:41 - INFO - __main__ -   epoch 19 loss 0.54076
+07/31/2023 15:05:36 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:05:36 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:05:36 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:05:48 - INFO - __main__ -     eval_loss = 0.6348
+07/31/2023 15:05:48 - INFO - __main__ -     eval_acc = 0.6428
+07/31/2023 15:05:48 - INFO - __main__ -     ********************
+07/31/2023 15:05:48 - INFO - __main__ -     Best acc:0.6428
+07/31/2023 15:05:48 - INFO - __main__ -     ********************
+07/31/2023 15:05:49 - INFO - __main__ -   Saving model checkpoint to ./saved_models/regcn_l2_hs128_uni_ws5_lr5e4/checkpoint-best-acc/model.bin
+07/31/2023 15:05:49 - INFO - __main__ -   epoch 20 loss 0.53274
+07/31/2023 15:07:43 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:07:43 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:07:43 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:07:56 - INFO - __main__ -     eval_loss = 0.6491
+07/31/2023 15:07:56 - INFO - __main__ -     eval_acc = 0.6347
+07/31/2023 15:07:56 - INFO - __main__ -   epoch 21 loss 0.52257
+07/31/2023 15:09:51 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:09:51 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:09:51 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:10:03 - INFO - __main__ -     eval_loss = 0.6431
+07/31/2023 15:10:03 - INFO - __main__ -     eval_acc = 0.6234
+07/31/2023 15:10:03 - INFO - __main__ -   epoch 22 loss 0.51241
+07/31/2023 15:11:58 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:11:58 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:11:58 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:12:10 - INFO - __main__ -     eval_loss = 0.6632
+07/31/2023 15:12:10 - INFO - __main__ -     eval_acc = 0.6358
+07/31/2023 15:12:10 - INFO - __main__ -   epoch 23 loss 0.50095
+07/31/2023 15:14:04 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:14:04 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:14:04 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:14:16 - INFO - __main__ -     eval_loss = 0.6653
+07/31/2023 15:14:16 - INFO - __main__ -     eval_acc = 0.6149
+07/31/2023 15:14:16 - INFO - __main__ -   epoch 24 loss 0.49615
+07/31/2023 15:16:13 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:16:13 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:16:13 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:16:25 - INFO - __main__ -     eval_loss = 0.6611
+07/31/2023 15:16:25 - INFO - __main__ -     eval_acc = 0.6259
+07/31/2023 15:16:25 - INFO - __main__ -   epoch 25 loss 0.4863
+07/31/2023 15:18:21 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:18:21 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:18:21 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:18:33 - INFO - __main__ -     eval_loss = 0.6602
+07/31/2023 15:18:33 - INFO - __main__ -     eval_acc = 0.6402
+07/31/2023 15:18:33 - INFO - __main__ -   epoch 26 loss 0.47633
+07/31/2023 15:20:28 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:20:28 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:20:28 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:20:40 - INFO - __main__ -     eval_loss = 0.6671
+07/31/2023 15:20:40 - INFO - __main__ -     eval_acc = 0.638
+07/31/2023 15:20:40 - INFO - __main__ -   epoch 27 loss 0.46816
+07/31/2023 15:22:35 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:22:35 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:22:35 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:22:48 - INFO - __main__ -     eval_loss = 0.7263
+07/31/2023 15:22:48 - INFO - __main__ -     eval_acc = 0.601
+07/31/2023 15:22:48 - INFO - __main__ -   epoch 28 loss 0.45362
+07/31/2023 15:24:44 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:24:44 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:24:44 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:24:57 - INFO - __main__ -     eval_loss = 0.6784
+07/31/2023 15:24:57 - INFO - __main__ -     eval_acc = 0.6186
+07/31/2023 15:24:57 - INFO - __main__ -   epoch 29 loss 0.45582
+07/31/2023 15:26:51 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:26:51 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:26:51 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:27:05 - INFO - __main__ -     eval_loss = 0.6985
+07/31/2023 15:27:05 - INFO - __main__ -     eval_acc = 0.6318
+07/31/2023 15:27:05 - INFO - __main__ -   epoch 30 loss 0.45177
+07/31/2023 15:29:07 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:29:07 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:29:07 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:29:20 - INFO - __main__ -     eval_loss = 0.7062
+07/31/2023 15:29:20 - INFO - __main__ -     eval_acc = 0.619
+07/31/2023 15:29:20 - INFO - __main__ -   epoch 31 loss 0.43719
+07/31/2023 15:31:15 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:31:15 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:31:15 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:31:28 - INFO - __main__ -     eval_loss = 0.7693
+07/31/2023 15:31:28 - INFO - __main__ -     eval_acc = 0.5974
+07/31/2023 15:31:28 - INFO - __main__ -   epoch 32 loss 0.42834
+07/31/2023 15:33:21 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:33:21 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:33:21 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:33:34 - INFO - __main__ -     eval_loss = 0.7476
+07/31/2023 15:33:34 - INFO - __main__ -     eval_acc = 0.6204
+07/31/2023 15:33:34 - INFO - __main__ -   epoch 33 loss 0.42802
+07/31/2023 15:35:28 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:35:28 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:35:28 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:35:40 - INFO - __main__ -     eval_loss = 0.7481
+07/31/2023 15:35:40 - INFO - __main__ -     eval_acc = 0.6215
+07/31/2023 15:35:40 - INFO - __main__ -   epoch 34 loss 0.41883
+07/31/2023 15:37:34 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:37:34 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:37:34 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:37:47 - INFO - __main__ -     eval_loss = 0.7645
+07/31/2023 15:37:47 - INFO - __main__ -     eval_acc = 0.6179
+07/31/2023 15:37:47 - INFO - __main__ -   epoch 35 loss 0.41555
+07/31/2023 15:39:43 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:39:43 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:39:43 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:39:55 - INFO - __main__ -     eval_loss = 0.7764
+07/31/2023 15:39:55 - INFO - __main__ -     eval_acc = 0.6142
+07/31/2023 15:39:55 - INFO - __main__ -   epoch 36 loss 0.40675
+07/31/2023 15:41:49 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:41:49 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:41:49 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:42:02 - INFO - __main__ -     eval_loss = 0.7836
+07/31/2023 15:42:02 - INFO - __main__ -     eval_acc = 0.6234
+07/31/2023 15:42:02 - INFO - __main__ -   epoch 37 loss 0.39759
+07/31/2023 15:43:56 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:43:56 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:43:56 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:44:09 - INFO - __main__ -     eval_loss = 0.7585
+07/31/2023 15:44:09 - INFO - __main__ -     eval_acc = 0.616
+07/31/2023 15:44:09 - INFO - __main__ -   epoch 38 loss 0.40327
+07/31/2023 15:46:07 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:46:07 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:46:07 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:46:19 - INFO - __main__ -     eval_loss = 0.8098
+07/31/2023 15:46:19 - INFO - __main__ -     eval_acc = 0.6303
+07/31/2023 15:46:19 - INFO - __main__ -   epoch 39 loss 0.39022
+07/31/2023 15:48:12 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:48:12 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:48:12 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:48:25 - INFO - __main__ -     eval_loss = 0.7941
+07/31/2023 15:48:25 - INFO - __main__ -     eval_acc = 0.6307
+07/31/2023 15:48:26 - INFO - __main__ -   epoch 40 loss 0.388
+07/31/2023 15:50:24 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:50:24 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:50:24 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:50:37 - INFO - __main__ -     eval_loss = 0.7825
+07/31/2023 15:50:37 - INFO - __main__ -     eval_acc = 0.6149
+07/31/2023 15:50:37 - INFO - __main__ -   epoch 41 loss 0.37953
+07/31/2023 15:52:36 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:52:36 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:52:36 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:52:48 - INFO - __main__ -     eval_loss = 0.82
+07/31/2023 15:52:48 - INFO - __main__ -     eval_acc = 0.6127
+07/31/2023 15:52:48 - INFO - __main__ -   epoch 42 loss 0.38383
+07/31/2023 15:54:46 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:54:46 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:54:46 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:55:00 - INFO - __main__ -     eval_loss = 0.7856
+07/31/2023 15:55:00 - INFO - __main__ -     eval_acc = 0.6223
+07/31/2023 15:55:00 - INFO - __main__ -   epoch 43 loss 0.37837
+07/31/2023 15:56:57 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:56:57 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:56:57 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:57:09 - INFO - __main__ -     eval_loss = 0.8252
+07/31/2023 15:57:09 - INFO - __main__ -     eval_acc = 0.6171
+07/31/2023 15:57:09 - INFO - __main__ -   epoch 44 loss 0.37293
+07/31/2023 15:59:06 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 15:59:06 - INFO - __main__ -     Num examples = 2732
+07/31/2023 15:59:06 - INFO - __main__ -     Batch size = 128
+07/31/2023 15:59:20 - INFO - __main__ -     eval_loss = 0.8589
+07/31/2023 15:59:20 - INFO - __main__ -     eval_acc = 0.6109
+07/31/2023 15:59:20 - INFO - __main__ -   epoch 45 loss 0.36521
+07/31/2023 16:01:19 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:01:19 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:01:19 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:01:32 - INFO - __main__ -     eval_loss = 0.8981
+07/31/2023 16:01:32 - INFO - __main__ -     eval_acc = 0.6076
+07/31/2023 16:01:32 - INFO - __main__ -   epoch 46 loss 0.36617
+07/31/2023 16:03:30 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:03:30 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:03:30 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:03:43 - INFO - __main__ -     eval_loss = 0.8889
+07/31/2023 16:03:43 - INFO - __main__ -     eval_acc = 0.6362
+07/31/2023 16:03:43 - INFO - __main__ -   epoch 47 loss 0.35751
+07/31/2023 16:05:40 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:05:40 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:05:40 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:05:54 - INFO - __main__ -     eval_loss = 0.8979
+07/31/2023 16:05:54 - INFO - __main__ -     eval_acc = 0.6131
+07/31/2023 16:05:54 - INFO - __main__ -   epoch 48 loss 0.35284
+07/31/2023 16:07:51 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:07:51 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:07:51 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:08:04 - INFO - __main__ -     eval_loss = 0.9019
+07/31/2023 16:08:04 - INFO - __main__ -     eval_acc = 0.6182
+07/31/2023 16:08:04 - INFO - __main__ -   epoch 49 loss 0.34455
+07/31/2023 16:10:02 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:10:02 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:10:02 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:10:14 - INFO - __main__ -     eval_loss = 0.9108
+07/31/2023 16:10:14 - INFO - __main__ -     eval_acc = 0.6153
+07/31/2023 16:10:14 - INFO - __main__ -   epoch 50 loss 0.33865
+07/31/2023 16:12:15 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:12:15 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:12:15 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:12:27 - INFO - __main__ -     eval_loss = 0.8783
+07/31/2023 16:12:27 - INFO - __main__ -     eval_acc = 0.6135
+07/31/2023 16:12:27 - INFO - __main__ -   epoch 51 loss 0.33742
+07/31/2023 16:14:26 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:14:26 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:14:26 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:14:39 - INFO - __main__ -     eval_loss = 0.8112
+07/31/2023 16:14:39 - INFO - __main__ -     eval_acc = 0.6197
+07/31/2023 16:14:39 - INFO - __main__ -   epoch 52 loss 0.33612
+07/31/2023 16:16:41 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:16:41 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:16:41 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:16:53 - INFO - __main__ -     eval_loss = 0.9539
+07/31/2023 16:16:53 - INFO - __main__ -     eval_acc = 0.6105
+07/31/2023 16:16:53 - INFO - __main__ -   epoch 53 loss 0.33392
+07/31/2023 16:18:56 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:18:56 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:18:56 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:19:09 - INFO - __main__ -     eval_loss = 0.9062
+07/31/2023 16:19:09 - INFO - __main__ -     eval_acc = 0.6061
+07/31/2023 16:19:09 - INFO - __main__ -   epoch 54 loss 0.33528
+07/31/2023 16:21:08 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:21:08 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:21:08 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:21:20 - INFO - __main__ -     eval_loss = 1.0246
+07/31/2023 16:21:20 - INFO - __main__ -     eval_acc = 0.6058
+07/31/2023 16:21:20 - INFO - __main__ -   epoch 55 loss 0.32597
+07/31/2023 16:23:25 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:23:25 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:23:25 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:23:38 - INFO - __main__ -     eval_loss = 0.9145
+07/31/2023 16:23:38 - INFO - __main__ -     eval_acc = 0.6113
+07/31/2023 16:23:38 - INFO - __main__ -   epoch 56 loss 0.32708
+07/31/2023 16:25:41 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:25:41 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:25:41 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:25:55 - INFO - __main__ -     eval_loss = 0.898
+07/31/2023 16:25:55 - INFO - __main__ -     eval_acc = 0.6182
+07/31/2023 16:25:55 - INFO - __main__ -   epoch 57 loss 0.32019
+07/31/2023 16:28:00 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:28:00 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:28:00 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:28:15 - INFO - __main__ -     eval_loss = 0.9838
+07/31/2023 16:28:15 - INFO - __main__ -     eval_acc = 0.604
+07/31/2023 16:28:15 - INFO - __main__ -   epoch 58 loss 0.31777
+07/31/2023 16:30:21 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:30:21 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:30:21 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:30:33 - INFO - __main__ -     eval_loss = 0.9769
+07/31/2023 16:30:33 - INFO - __main__ -     eval_acc = 0.608
+07/31/2023 16:30:33 - INFO - __main__ -   epoch 59 loss 0.3098
+07/31/2023 16:32:37 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:32:37 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:32:37 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:32:50 - INFO - __main__ -     eval_loss = 1.0111
+07/31/2023 16:32:50 - INFO - __main__ -     eval_acc = 0.6032
+07/31/2023 16:32:50 - INFO - __main__ -   epoch 60 loss 0.30952
+07/31/2023 16:34:57 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:34:57 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:34:57 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:35:11 - INFO - __main__ -     eval_loss = 0.943
+07/31/2023 16:35:11 - INFO - __main__ -     eval_acc = 0.6142
+07/31/2023 16:35:11 - INFO - __main__ -   epoch 61 loss 0.30677
+07/31/2023 16:37:18 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:37:18 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:37:18 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:37:32 - INFO - __main__ -     eval_loss = 0.9509
+07/31/2023 16:37:32 - INFO - __main__ -     eval_acc = 0.6116
+07/31/2023 16:37:32 - INFO - __main__ -   epoch 62 loss 0.30289
+07/31/2023 16:39:37 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:39:37 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:39:37 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:39:50 - INFO - __main__ -     eval_loss = 0.9149
+07/31/2023 16:39:50 - INFO - __main__ -     eval_acc = 0.6051
+07/31/2023 16:39:50 - INFO - __main__ -   epoch 63 loss 0.30545
+07/31/2023 16:41:49 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:41:49 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:41:49 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:42:03 - INFO - __main__ -     eval_loss = 0.9568
+07/31/2023 16:42:03 - INFO - __main__ -     eval_acc = 0.6098
+07/31/2023 16:42:03 - INFO - __main__ -   epoch 64 loss 0.2982
+07/31/2023 16:44:04 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:44:04 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:44:04 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:44:17 - INFO - __main__ -     eval_loss = 0.9706
+07/31/2023 16:44:17 - INFO - __main__ -     eval_acc = 0.6171
+07/31/2023 16:44:17 - INFO - __main__ -   epoch 65 loss 0.29596
+07/31/2023 16:46:21 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:46:21 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:46:21 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:46:37 - INFO - __main__ -     eval_loss = 1.0163
+07/31/2023 16:46:37 - INFO - __main__ -     eval_acc = 0.6051
+07/31/2023 16:46:37 - INFO - __main__ -   epoch 66 loss 0.29607
+07/31/2023 16:48:46 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:48:46 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:48:46 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:49:00 - INFO - __main__ -     eval_loss = 1.048
+07/31/2023 16:49:00 - INFO - __main__ -     eval_acc = 0.6043
+07/31/2023 16:49:00 - INFO - __main__ -   epoch 67 loss 0.28626
+07/31/2023 16:51:04 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:51:04 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:51:04 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:51:18 - INFO - __main__ -     eval_loss = 1.0255
+07/31/2023 16:51:18 - INFO - __main__ -     eval_acc = 0.6083
+07/31/2023 16:51:18 - INFO - __main__ -   epoch 68 loss 0.29001
+07/31/2023 16:53:27 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:53:27 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:53:27 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:53:41 - INFO - __main__ -     eval_loss = 1.0315
+07/31/2023 16:53:41 - INFO - __main__ -     eval_acc = 0.6047
+07/31/2023 16:53:41 - INFO - __main__ -   epoch 69 loss 0.28804
+07/31/2023 16:55:50 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:55:50 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:55:50 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:56:06 - INFO - __main__ -     eval_loss = 1.0641
+07/31/2023 16:56:06 - INFO - __main__ -     eval_acc = 0.5952
+07/31/2023 16:56:06 - INFO - __main__ -   epoch 70 loss 0.28701
+07/31/2023 16:58:18 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 16:58:18 - INFO - __main__ -     Num examples = 2732
+07/31/2023 16:58:18 - INFO - __main__ -     Batch size = 128
+07/31/2023 16:58:34 - INFO - __main__ -     eval_loss = 1.1921
+07/31/2023 16:58:34 - INFO - __main__ -     eval_acc = 0.5937
+07/31/2023 16:58:34 - INFO - __main__ -   epoch 71 loss 0.27988
+07/31/2023 17:00:42 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:00:42 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:00:42 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:00:57 - INFO - __main__ -     eval_loss = 1.0814
+07/31/2023 17:00:57 - INFO - __main__ -     eval_acc = 0.6087
+07/31/2023 17:00:57 - INFO - __main__ -   epoch 72 loss 0.27728
+07/31/2023 17:03:10 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:03:10 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:03:10 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:03:25 - INFO - __main__ -     eval_loss = 1.06
+07/31/2023 17:03:25 - INFO - __main__ -     eval_acc = 0.6146
+07/31/2023 17:03:26 - INFO - __main__ -   epoch 73 loss 0.27585
+07/31/2023 17:05:37 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:05:37 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:05:37 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:05:52 - INFO - __main__ -     eval_loss = 1.138
+07/31/2023 17:05:52 - INFO - __main__ -     eval_acc = 0.6094
+07/31/2023 17:05:52 - INFO - __main__ -   epoch 74 loss 0.27488
+07/31/2023 17:08:08 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:08:08 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:08:08 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:08:24 - INFO - __main__ -     eval_loss = 1.1029
+07/31/2023 17:08:24 - INFO - __main__ -     eval_acc = 0.6124
+07/31/2023 17:08:24 - INFO - __main__ -   epoch 75 loss 0.2698
+
+
+07/31/2023 17:10:36 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:10:36 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:10:36 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:10:50 - INFO - __main__ -     eval_loss = 1.11
+07/31/2023 17:10:50 - INFO - __main__ -     eval_acc = 0.6025
+07/31/2023 17:10:50 - INFO - __main__ -   epoch 76 loss 0.26397
+07/31/2023 17:13:04 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:13:04 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:13:04 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:13:19 - INFO - __main__ -     eval_loss = 1.112
+07/31/2023 17:13:19 - INFO - __main__ -     eval_acc = 0.6094
+07/31/2023 17:13:19 - INFO - __main__ -   epoch 77 loss 0.26306
+07/31/2023 17:15:37 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:15:37 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:15:37 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:15:54 - INFO - __main__ -     eval_loss = 1.1411
+07/31/2023 17:15:54 - INFO - __main__ -     eval_acc = 0.6054
+07/31/2023 17:15:54 - INFO - __main__ -   epoch 78 loss 0.26175
+07/31/2023 17:18:13 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:18:13 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:18:13 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:18:29 - INFO - __main__ -     eval_loss = 1.1187
+07/31/2023 17:18:29 - INFO - __main__ -     eval_acc = 0.616
+07/31/2023 17:18:29 - INFO - __main__ -   epoch 79 loss 0.25704
+07/31/2023 17:20:45 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:20:45 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:20:45 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:21:02 - INFO - __main__ -     eval_loss = 1.1003
+07/31/2023 17:21:02 - INFO - __main__ -     eval_acc = 0.6076
+07/31/2023 17:21:02 - INFO - __main__ -   epoch 80 loss 0.25516
+07/31/2023 17:23:25 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:23:25 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:23:25 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:23:41 - INFO - __main__ -     eval_loss = 1.1905
+07/31/2023 17:23:41 - INFO - __main__ -     eval_acc = 0.6058
+07/31/2023 17:23:41 - INFO - __main__ -   epoch 81 loss 0.25422
+07/31/2023 17:26:09 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:26:09 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:26:09 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:26:23 - INFO - __main__ -     eval_loss = 1.2068
+07/31/2023 17:26:23 - INFO - __main__ -     eval_acc = 0.6153
+07/31/2023 17:26:23 - INFO - __main__ -   epoch 82 loss 0.24913
+07/31/2023 17:28:50 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:28:50 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:28:50 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:29:08 - INFO - __main__ -     eval_loss = 1.1854
+07/31/2023 17:29:08 - INFO - __main__ -     eval_acc = 0.6105
+07/31/2023 17:29:08 - INFO - __main__ -   epoch 83 loss 0.25376
+07/31/2023 17:31:30 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:31:30 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:31:30 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:31:44 - INFO - __main__ -     eval_loss = 1.1493
+07/31/2023 17:31:44 - INFO - __main__ -     eval_acc = 0.6029
+07/31/2023 17:31:44 - INFO - __main__ -   epoch 84 loss 0.24769
+07/31/2023 17:33:58 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:33:58 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:33:58 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:34:15 - INFO - __main__ -     eval_loss = 1.1137
+07/31/2023 17:34:15 - INFO - __main__ -     eval_acc = 0.6116
+07/31/2023 17:34:15 - INFO - __main__ -   epoch 85 loss 0.25129
+07/31/2023 17:36:39 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:36:39 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:36:39 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:36:56 - INFO - __main__ -     eval_loss = 1.1426
+07/31/2023 17:36:56 - INFO - __main__ -     eval_acc = 0.6072
+07/31/2023 17:36:56 - INFO - __main__ -   epoch 86 loss 0.24758
+07/31/2023 17:39:29 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:39:29 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:39:29 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:39:44 - INFO - __main__ -     eval_loss = 1.1892
+07/31/2023 17:39:44 - INFO - __main__ -     eval_acc = 0.604
+07/31/2023 17:39:44 - INFO - __main__ -   epoch 87 loss 0.24526
+07/31/2023 17:42:17 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:42:17 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:42:17 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:42:34 - INFO - __main__ -     eval_loss = 1.2163
+07/31/2023 17:42:34 - INFO - __main__ -     eval_acc = 0.6069
+07/31/2023 17:42:34 - INFO - __main__ -   epoch 88 loss 0.24464
+07/31/2023 17:45:10 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:45:10 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:45:10 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:45:25 - INFO - __main__ -     eval_loss = 1.1796
+07/31/2023 17:45:25 - INFO - __main__ -     eval_acc = 0.6087
+07/31/2023 17:45:25 - INFO - __main__ -   epoch 89 loss 0.24211
+07/31/2023 17:48:08 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:48:08 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:48:08 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:48:24 - INFO - __main__ -     eval_loss = 1.1935
+07/31/2023 17:48:24 - INFO - __main__ -     eval_acc = 0.6087
+07/31/2023 17:48:24 - INFO - __main__ -   epoch 90 loss 0.23605
+07/31/2023 17:50:56 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:50:56 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:50:56 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:51:14 - INFO - __main__ -     eval_loss = 1.1985
+07/31/2023 17:51:14 - INFO - __main__ -     eval_acc = 0.612
+07/31/2023 17:51:14 - INFO - __main__ -   epoch 91 loss 0.23977
+07/31/2023 17:53:43 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:53:43 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:53:43 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:54:00 - INFO - __main__ -     eval_loss = 1.181
+07/31/2023 17:54:00 - INFO - __main__ -     eval_acc = 0.608
+07/31/2023 17:54:00 - INFO - __main__ -   epoch 92 loss 0.23782
+07/31/2023 17:56:39 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:56:39 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:56:39 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:56:55 - INFO - __main__ -     eval_loss = 1.2121
+07/31/2023 17:56:55 - INFO - __main__ -     eval_acc = 0.6076
+07/31/2023 17:56:55 - INFO - __main__ -   epoch 93 loss 0.23177
+07/31/2023 17:59:32 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 17:59:32 - INFO - __main__ -     Num examples = 2732
+07/31/2023 17:59:32 - INFO - __main__ -     Batch size = 128
+07/31/2023 17:59:49 - INFO - __main__ -     eval_loss = 1.2028
+07/31/2023 17:59:49 - INFO - __main__ -     eval_acc = 0.612
+07/31/2023 17:59:49 - INFO - __main__ -   epoch 94 loss 0.23256
+07/31/2023 18:02:28 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 18:02:28 - INFO - __main__ -     Num examples = 2732
+07/31/2023 18:02:28 - INFO - __main__ -     Batch size = 128
+07/31/2023 18:02:46 - INFO - __main__ -     eval_loss = 1.2391
+07/31/2023 18:02:46 - INFO - __main__ -     eval_acc = 0.6083
+07/31/2023 18:02:46 - INFO - __main__ -   epoch 95 loss 0.23023
+07/31/2023 18:05:24 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 18:05:24 - INFO - __main__ -     Num examples = 2732
+07/31/2023 18:05:24 - INFO - __main__ -     Batch size = 128
+07/31/2023 18:05:42 - INFO - __main__ -     eval_loss = 1.2421
+07/31/2023 18:05:42 - INFO - __main__ -     eval_acc = 0.6116
+07/31/2023 18:05:42 - INFO - __main__ -   epoch 96 loss 0.22958
+07/31/2023 18:08:19 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 18:08:19 - INFO - __main__ -     Num examples = 2732
+07/31/2023 18:08:19 - INFO - __main__ -     Batch size = 128
+07/31/2023 18:08:36 - INFO - __main__ -     eval_loss = 1.259
+07/31/2023 18:08:36 - INFO - __main__ -     eval_acc = 0.6124
+07/31/2023 18:08:36 - INFO - __main__ -   epoch 97 loss 0.2244
+07/31/2023 18:11:07 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 18:11:07 - INFO - __main__ -     Num examples = 2732
+07/31/2023 18:11:07 - INFO - __main__ -     Batch size = 128
+07/31/2023 18:11:25 - INFO - __main__ -     eval_loss = 1.2478
+07/31/2023 18:11:25 - INFO - __main__ -     eval_acc = 0.6124
+07/31/2023 18:11:25 - INFO - __main__ -   epoch 98 loss 0.23281
+07/31/2023 18:14:04 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 18:14:04 - INFO - __main__ -     Num examples = 2732
+07/31/2023 18:14:04 - INFO - __main__ -     Batch size = 128
+07/31/2023 18:14:22 - INFO - __main__ -     eval_loss = 1.244
+07/31/2023 18:14:22 - INFO - __main__ -     eval_acc = 0.6127
+07/31/2023 18:14:22 - INFO - __main__ -   epoch 99 loss 0.22876
+07/31/2023 18:14:26 - INFO - __main__ -   ***** Running evaluation *****
+07/31/2023 18:14:26 - INFO - __main__ -     Num examples = 2732
+07/31/2023 18:14:26 - INFO - __main__ -     Batch size = 128
+07/31/2023 18:14:44 - INFO - __main__ -   ***** Eval results *****
+07/31/2023 18:14:44 - INFO - __main__ -     eval_acc = 0.6428
+07/31/2023 18:14:44 - INFO - __main__ -     eval_loss = 0.6348
+07/31/2023 18:14:49 - INFO - __main__ -   ***** Running Test *****
+07/31/2023 18:14:49 - INFO - __main__ -     Num examples = 2732
+07/31/2023 18:14:49 - INFO - __main__ -     Batch size = 128
+07/31/2023 18:15:07 - INFO - __main__ -   ***** Test results *****
+07/31/2023 18:15:07 - INFO - __main__ -     test_acc = 0.6307
