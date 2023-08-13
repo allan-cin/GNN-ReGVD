@@ -10,6 +10,8 @@ from torch.nn import CrossEntropyLoss, MSELoss
 from modelGNN_updates import *
 from utils import preprocess_features, preprocess_adj
 from utils import *
+import neptune
+from neptune_pytorch import NeptuneLogger
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -119,7 +121,9 @@ class DevignModel(nn.Module):
         self.tokenizer = tokenizer
 
         self.gnn = GGGNN(feature_dim_size=args.feature_dim_size, hidden_size=args.hidden_size,
-                         num_GNN_layers=args.num_GNN_layers, num_classes=args.num_classes, dropout=config.hidden_dropout_prob)
+                         num_GNN_layers=args.num_GNN_layers,
+                         # num_classes=args.num_classes,
+                         dropout=config.hidden_dropout_prob)
 
         self.conv_l1 = torch.nn.Conv1d(args.hidden_size, args.hidden_size, 3).double()
         self.maxpool1 = torch.nn.MaxPool1d(3, stride=2).double()
